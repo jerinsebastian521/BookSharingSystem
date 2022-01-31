@@ -64,7 +64,7 @@
               &nbsp;
             {% if request.session.email %}
             Welcome:
-            {{request.session.email}}<br><a href="">logout</a>{% else%}{% endif %}
+            {{request.session.email}}<br><a href="{% url 'user:logout' %}">logout</a>{% else%}{% endif %}
         </p>
                 
             
