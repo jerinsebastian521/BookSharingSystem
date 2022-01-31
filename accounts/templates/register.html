@@ -63,7 +63,7 @@
            
             <form class="form-inline my-2 my-lg-0" >
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                <button class="btn btn-primary btn-sm" type="submit">Search</button>
             </form>
         </nav>
     </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               
-              <form action="register" method = "POST">
+              <form action="register" method = "POST" >
                 {% csrf_token %}
       
                 <div class="divider d-flex align-items-center my-4">
@@ -89,41 +89,48 @@
                 </div>
                 <!-- first_name -->
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example3">First name</label>
-                  <input type="text" id="first_name" name="first_name" class="form-control form-control-lg"
-                    placeholder="First Name" />
+                  <label class="form-label" for="form3Example3">First Name</label>
+                  <input type="text" id="firstname" name="firstname" class="form-control form-control-sm"
+                    placeholder="First Name" required/>
                 </div>
                 <!-- last_name -->
                 <div class="form-outline mb-3">
-                  <label class="form-label" for="form3Example4">Lastname</label>
-                  <input type="text" id="last_name" name="last_name" class="form-control form-control-lg"
-                    placeholder="Lastname" />
+                  <label class="form-label" for="form3Example4">Last Name</label>
+                  <input type="text" id="lastname" name="lastname" class="form-control form-control-sm"
+                    placeholder="Last Name" required/>
                 </div>
-                <!-- username -->
+                
+                <!-- address -->
                 <div class="form-outline mb-3">
-                    <label class="form-label" for="form3Example4">Username</label>
-                    <input type="text" id="username" name="username" class="form-control form-control-lg"
-                      placeholder="Username" />
-                  </div>
+                  <label class="form-label" for="form3Example4">Address</label>
+                  <input type="address" id="address" name="address" class="form-control form-control-sm"
+                    placeholder="Address" required/>
+                </div>
+                <!-- phone -->
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="form3Example4">Phone</label>
+                  <input type="text" id="phone" name="phone" class="form-control form-control-sm"
+                    placeholder="Phone" required/>
+                </div>
                 
                   <!-- email -->
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form3Example4">Email</label>
-                    <input type="text" id="email" name="email" class="form-control form-control-lg"
-                      placeholder="Email" />
+                    <input type="text" id="email" name="email" class="form-control form-control-sm"
+                      placeholder="Email" required/>
                   </div>
                 
                 <!-- Password -->
                 <div class="form-outline mb-3">
                     <label class="form-label" for="form3Example4">Password</label>
-                    <input type="text" id="password1" name="password1" class="form-control form-control-lg"
-                      placeholder="Password" />
+                    <input type="text" id="password1" name="password1" class="form-control form-control-sm"
+                      placeholder="Password" onchange="form.password2.pattern=this.value" required/>
                   </div>
                 <!-- confirm_Password -->
-                <div class="form-outline mb-3">
+                <div class="form-outline mb-3" >
                     <label class="form-label" for="form3Example4">Confirm Password</label>
-                    <input type="password" id="password2" name="password2" class="form-control form-control-lg"
-                      placeholder="Password" />
+                    <input type="password" id="password2" name="password2" class="form-control form-control-sm"
+                      placeholder="Password"  required/>
                   </div>
                 <!-- Register Button -->
                 <div class="text-center text-lg-start mt-4 pt-2">
@@ -137,8 +144,7 @@
           </div>
         </div>
    
-
-
+<div style="margin-top: 200px;">
     <footer class="container-fluid bcontent" , align="center">
         <a href="#"><i class="fa fa-facebook-official"></i></a>
         <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -149,6 +155,7 @@
         Powered by <a href="" target="_blank">Books Sharing System</a>
         </p>
       </footer>
+    </div>
 </body>
 
 

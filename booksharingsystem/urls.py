@@ -26,7 +26,7 @@ from home import views
 urlpatterns = [
 
     path('',views.HomePage,name= 'index'),
-    path('login/',views.Login,name= 'login'),
+    #path('login/',views.login,name= 'login'),
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls'))
 ]
