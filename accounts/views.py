@@ -1,12 +1,12 @@
 from django.contrib.auth import login as auth_login
-
+from django.urls import path
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib import messages
 from accounts.models import Userreg,Login
 
-# Create your views here.
+
 def login(request):
 
      if request.method == 'POST':
@@ -15,9 +15,9 @@ def login(request):
             userdetails = Login.objects.get(email=request.POST['email'],password=request.POST['password'])
             print("username",userdetails)
             request.session['email']=userdetails.email
-            return render(request, 'userindex.html' )
+            return render(request, 'userindex.html')
         except ObjectDoesNotExist:
-            messages.success(request,"Username/Password Invalid..") 
+            messages.success(request,"Invalid Username/Password ") 
      return render(request, 'login.html')
 
 

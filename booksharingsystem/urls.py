@@ -28,5 +28,6 @@ urlpatterns = [
     path('',views.HomePage,name= 'index'),
     #path('login/',views.login,name= 'login'),
     path('admin/', admin.site.urls),
-    path('accounts/',include('accounts.urls'))
+    path('accounts/',include('accounts.urls')),
+    path('user/',include('user.urls'))
 ]
