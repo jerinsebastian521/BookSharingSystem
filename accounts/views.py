@@ -37,7 +37,12 @@ def register(request):
           savecard.address=request.POST.get('address')
           savecard.phone=request.POST.get('phone')
           savecard.email=request.POST.get('email')
-          savecard.save()
+          if Userreg.objects.filter(email =email).exists():
+                 messages.success(request,'Email/Username Already Exist...')
+                 return redirect('accounts:register')
+          else:
+           savecard.save()
+    
           
           email = request.POST.get('email')
           password1 = request.POST.get('password1')
