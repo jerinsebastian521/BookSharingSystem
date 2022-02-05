@@ -53,47 +53,48 @@
                 <button class="btn btn-primary btn-sm" type="submit">Search</button>
             </form>
             <p align="right">
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-              {% if request.session.email %}
-              Welcome:
-              {{request.session.email}}<br><a href="{% url 'user:logout' %}">logout</a>{% else%}{% endif %}
-          </p>
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+            {% for prof in profile %}
+            Welcome:
+            {{prof.firstname}}<br><a href="{% url 'user:logout' %}"> Logout</a>{% endfor %} 
+        </p>
         </nav>
     </div>
   
     <div class="container-fluid bcontent" >
-        <form> 
+        <form action="addbooks" method = "POST"> 
+          {% csrf_token %}
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="inputEmail4">Book Name</label>
-                <input  type="email" class="form-control" id="inputEmail4" placeholder="Book Name">
+                <input  type="text" name="bookname" class="form-control" id="inputEmail4" placeholder="Book Name">
               </div>
               <div class="form-group col-md-4">
                 <label for="inputPassword4">Book Author</label>
-                <input  type="password" class="form-control" id="inputPassword4" placeholder="Book Author">
+                <input  type="text" name="bookauthor" class="form-control" id="inputPassword4" placeholder="Book Author">
               </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="inputEmail4">Description</label>
-                  <input  type="email" class="form-control" id="inputEmail4" placeholder="Description">
+                  <input  type="text" name="description" class="form-control" id="inputEmail4" placeholder="Description">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputPassword4">Images</label>
-                  <input  type="file" class="form-control" id="inputPassword4" placeholder="Images" multiple>
+                  <input  type="file" name="image" class="form-control" id="inputPassword4" placeholder="Images" multiple>
                 </div>
               </div>
 
               <div class="form-group col-md-4">
                 <label for="inputState">Sell/Rent</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" name="sr" class="form-control">
                   <option selected>Sell/Rent</option>
                   <option>Sell</option>
                   <option>Rent</option>
@@ -101,7 +102,7 @@
               </div>
               <div class="form-group col-md-4">
                 <label for="inputZip">Price</label>
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text" name="price" class="form-control" id="price">
               </div>
             </div>
             <button  type="submit" class="btn btn-primary">add books</button>

@@ -13,6 +13,7 @@ def login(request):
         try:
             
             userdetails = Login.objects.get(email=request.POST['email'],password=request.POST['password'])
+        
             print("username",userdetails)
             request.session['email']=userdetails.email
             return render(request, 'userindex.html')
@@ -24,20 +25,21 @@ def login(request):
 def register(request):
     
     if request.method == 'POST':
-
+          
           firstname = request.POST.get('firstname')
           lastname = request.POST.get('lastname')
           address = request.POST.get('address')
           phone = request.POST.get('phone')
           email = request.POST.get('email')
-
+          
           savecard=Userreg()
+          
           savecard.firstname=request.POST.get('firstname')
           savecard.lastname=request.POST.get('lastname')
           savecard.address=request.POST.get('address')
           savecard.phone=request.POST.get('phone')
           savecard.email=request.POST.get('email')
-          if Userreg.objects.filter(email =email).exists():
+          if Userreg.objects.filter(email=email).exists():
                  messages.success(request,'Email/Username Already Exist...')
                  return redirect('accounts:register')
           else:
@@ -56,15 +58,6 @@ def register(request):
           login.save()
 
           messages.success(request,"New User Created Succesfully..Please Login")
-
-          return render(request,'login.html')
-          #if password1 == password2:
-                
-                  
-          #else:
-           # print('Password Not Matching...')   
-           # return redirect('/accounts/register')
-         
-          
+          return render(request,'login.html')    
     else:
       return render(request,'register.html')
