@@ -63,37 +63,37 @@
               &nbsp;
             {% for prof in profile %}
             Welcome:
-            {{prof.firstname}}<br><a href="{% url 'user:logout' %}"> Logout</a>{% endfor %} 
+            {{prof.firstname}}<br><a href="{% url 'user:logout' %}"> Logout</a> <i class="fa fa-sign-out"></i>{% endfor %} 
         </p>
         </nav>
     </div>
   
-    <div class="container-fluid bcontent" >
+    <div class="container-fluid bcontent" align="center">
         <form action="addbooks" method = "POST"> 
           {% csrf_token %}
-            <div class="form-row">
+            <div class="form-row" >
               <div class="form-group col-md-4">
-                <label for="inputEmail4">Book Name</label>
-                <input  type="text" name="bookname" class="form-control" id="inputEmail4" placeholder="Book Name">
+                <label for="inputEmail4"><b>Book Name</b></label>
+                <input  type="text" name="bookname" class="form-control" id="inputEmail4" placeholder="Book Name" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="inputPassword4">Book Author</label>
-                <input  type="text" name="bookauthor" class="form-control" id="inputPassword4" placeholder="Book Author">
+                <label for="inputPassword4"><b>Book Author</b></label>
+                <input  type="text" name="bookauthor" class="form-control" id="inputPassword4" placeholder="Book Author" required>
               </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputEmail4">Description</label>
-                  <input  type="text" name="description" class="form-control" id="inputEmail4" placeholder="Description">
+                  <label for="inputEmail4"><b>Description</b></label>
+                  <input  type="text" name="description" class="form-control" id="inputEmail4" placeholder="Description" required>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="inputPassword4">Images</label>
-                  <input  type="file" name="image" class="form-control" id="inputPassword4" placeholder="Images" multiple>
+                  <label for="inputPassword4"><b>Images</b></label>
+                  <input  type="file" name="image" class="form-control" id="inputPassword4" placeholder="Images" multiple required>
                 </div>
               </div>
-
+              <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="inputState">Sell/Rent</label>
+                <label for="inputState"><b>Sell/Rent</b></label>
                 <select id="inputState" name="sr" class="form-control">
                   <option selected>Sell/Rent</option>
                   <option>Sell</option>
@@ -101,28 +101,56 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="inputZip">Price</label>
-                <input type="text" name="price" class="form-control" id="price">
+                <label for="inputZip"><b>Price</b></label>
+                <input type="text" name="price" class="form-control" id="price" placeholder="Price of Book" required>
               </div>
             </div>
-            <button  type="submit" class="btn btn-primary">add books</button>
+          </div>
+            <div align="center">  <button  type="submit" class="btn btn-primary">Add Book</button></div>
+            
           </form>
-    </div>
-   
+    </div><br>
+  
+<div class="container-fluid bcontent"  align="center">
 
 
-    <div style="margin-top: 700px;">
-        <footer class="container-fluid bcontent" , align="center">
-            <a href="#"><i class="fa fa-facebook-official"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-flickr"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <p class="container-fluid bcontent">
-            Powered by <a href="" target="_blank">Books Sharing System</a>
-            </p>
-          </footer>
-        </div>
+  <table class="table table-striped">
+    <tr>
+      <th scope="col">Book Id</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Book Author</th>
+      <th scope="col">Book Description</th>
+      <th scope="col">Book price</th>
+      <th scope="col">Action</th>
+    </tr>
+    {% for bd in book %}
+    
+    <tr>
+     
+      <td scope="row">{{bd.bid}}</td>
+      <td scope="row">{{bd.bookname}}</td>
+      <td scope="row">{{bd.bookauthor}}</td>
+      <td scope="row">{{bd.description}}</td>
+      <td scope="row"><b>Rs:</b> {{bd.price}}</td>
+      <td scope="row"><button class="btn btn-primary btn-sm">Update</button> &nbsp; <button class="btn btn-primary btn-sm">Delete</button></td>
+    </tr>
+    {% endfor %}
+    
+  </table>
+</div>
+
+<div style="margin-top:160px;" class="container-fluid bcontent">
+  <footer style="background-color:whitesmoke" class="container-fluid bcontent" , align="center">
+      <a href="#"><i class="fa fa-facebook-official"></i></a>
+      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-flickr"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <p class="container-fluid bcontent">
+      Powered by <a href="" target="_blank">Books Sharing System</a>
+      </p>
+    </footer>
+  </div>
 </body>
 
 

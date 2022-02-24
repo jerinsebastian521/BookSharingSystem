@@ -17,7 +17,8 @@
             margin-top: 10px;
         }
         
-        
+
+       
     </style>
 
 
@@ -63,7 +64,7 @@
                 &nbsp;
                 {% for prof in profile %}
               Welcome:
-              {{prof.firstname}}<br><a href="{% url 'user:logout' %}"> Logout</a>{% endfor %} 
+              {{prof.firstname}}<br><a href="{% url 'user:logout' %}"> Logout</a> <i class="fa fa-sign-out"></i>{% endfor %} 
           </p>
         </nav>
     </div>
@@ -73,18 +74,97 @@
          {% endfor %}
         </div>
 
-    <div style="margin-top: 500px;">
-        <footer class="container-fluid bcontent" , align="center">
-            <a href="#"><i class="fa fa-facebook-official"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-flickr"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <p class="container-fluid bcontent">
-            Powered by <a href="" target="_blank">Books Sharing System</a>
-            </p>
-          </footer>
-        </div>
+        <div class="container-fluid bcontent">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="items">
+
+
+                        
+                       
+                        <div class="product">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img class="img-fluid mx-auto d-block image" src="">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="info">
+                                        <div class="row">
+                                            <div class="col-md-5 product-name">
+                                                <div class="product-name">
+                                                    <label for=""><b>Product:</b></label><br>
+                                                    <a href="#"></a>
+                                                    {% for ds in bookdt %}
+                                              
+                                                    <div class="product-info">
+                                                       
+                                                        <div>Book Name:{{ds.bname}} <span class="value"></span></div>
+                                                        <div>Book id:{{ds.prod_id}} <span class="value"></span></div>
+                                                        <div>Description:{{ds.payment}} <span class="value"></span></div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 quantity">
+                                                <label for="quantity"><b>Quantity:</b></label>
+                                                <input id="quantity" type="number" value ="1" class="form-control quantity-input" readonly>
+                                            </div>
+                                            <div class="col-md-3 price">
+                                                <label for="quantity"><b>Price:</b></label><br>
+                                                <span>Rs:200</span>
+                                                   <p style="color: red;">{{ds.payment}}</p> 
+                                            </div>
+                                           
+                                           
+                                           
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                       
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="summary">
+                        {% for prof in profile %} 
+                        <h3>Order Summary</h3>
+                        <div class="summary-item"><span class="text"> <i class="fa fa-shopping-cart" style="font-size:25px;color:blue"></i> <b>Address:</b><br>{{prof.address}}</span><span class="price"></span></div>
+                       
+                    
+                        {% endfor %}
+                    </div>
+                    <form action="cart" method="POST">
+                        {% csrf_token %}
+                    <input hidden type="text" value="{{ds.prod_id}}" name="pd">
+                    <input class="btn btn-primary btn-sm" type="submit" value="Pay">
+                    {% endfor %}
+                </form>
+                </div>
+                
+            </div> 
+
+
+
+
+
+            <div style="margin-top:500px;" class="container-fluid bcontent">
+                <footer style="background-color:whitesmoke" class="container-fluid bcontent" , align="center">
+                    <a href="#"><i class="fa fa-facebook-official"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-flickr"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <p class="container-fluid bcontent">
+                    Powered by <a href="" target="_blank">Books Sharing System</a>
+                    </p>
+                  </footer>
+                </div>
 </body>
 
 

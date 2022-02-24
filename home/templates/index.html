@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>user index</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -44,7 +46,7 @@
                     <a class="nav-link" href="#"><b>Delivery Agent Login</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><b>Admin</b></a>
+                    <a class="nav-link" href="admin"><b>Admin</b></a>
                 </li>
             </ul>
            
@@ -54,25 +56,18 @@
             </form>
         </nav>
     </div>
-    <div class ="container-fluid bcontent">
 
-        <section>
-            <div>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Book title</h5>
-                      <p class="card-text">Book Description.</p>
-                      <a href="#" class="btn btn-primary">Buy</a>
-                    </div>
-                  </div>
 
-            </div>
-        </section>
+    <div class="container-fluid bcontent">
+
+     {% load static %} <img src="{%  static 'booksharingsystem/images/img1.jpg' %}" alt="" height="640px" width="1500px">
+
     </div>
 
-    <div style="margin-top: 360px;">
-        <footer class="container-fluid bcontent" , align="center">
+
+
+    <div style="margin-top:10px;" class="container-fluid bcontent">
+        <footer style="background-color:whitesmoke" class="container-fluid bcontent" , align="center">
             <a href="#"><i class="fa fa-facebook-official"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>

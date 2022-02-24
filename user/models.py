@@ -9,9 +9,22 @@ class Books(models.Model):
     bookauthor = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     price = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='media/image/ % Y/% m/% d/')
+    image = models.ImageField(upload_to='booksharingsystem/images/ % Y/% m/% d/')
     sr = models.CharField(max_length=100)
     userid = models.CharField(max_length=100)
 
     class Meta:
         db_table="books"
+
+class Bookstatus(models.Model):
+
+    bsid=models.AutoField(primary_key=True) 
+    prod_id=models.CharField(max_length=100)
+    user_id=models.CharField(max_length=100)
+    sell_id=models.CharField(max_length=100)
+    payment=models.CharField(max_length=100)
+    d_status=models.CharField(max_length=100)
+    bname=models.CharField(max_length=100)
+
+    class Meta:
+        db_table="bookstatus"
