@@ -16,7 +16,7 @@ def login(request):
         
             print("username",userdetails)
             request.session['email']=userdetails.email
-            return render(request, 'userindex.html')
+            return render(request, 'userindex.html' )
         except ObjectDoesNotExist:
             messages.success(request,"Invalid Username/Password ") 
      return render(request, 'login.html')

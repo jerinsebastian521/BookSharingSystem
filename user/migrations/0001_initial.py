@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('bookauthor', models.CharField(max_length=100)),
                 ('description', models.CharField(max_length=100)),
                 ('price', models.CharField(max_length=100)),
-                ('image', models.ImageField(upload_to='media/image/ % Y/% m/% d/')),
+                ('image', models.ImageField(upload_to='uploads/')),
                 ('sr', models.CharField(max_length=100)),
                 ('userid', models.CharField(max_length=100)),
             ],

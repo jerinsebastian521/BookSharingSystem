@@ -15,7 +15,6 @@ def userindex(request):
 
 
     displays=Books.objects.all()
-    #displays=Books.objects.filter(userid=cm)
     
     if request.method == 'POST':
         
@@ -23,9 +22,16 @@ def userindex(request):
         seller_id=request.POST.get('sid')
         bname=request.POST.get('bname')
 
-        if seller_id == cm:
+        ck=Bookstatus.objects.all()
+    
+        if seller_id == cm  :
              messages.error(request,"Can't Order Your Product Itself")
              return render(request, 'userindex.html',{'display':displays})
+        elif Bookstatus.objects.filter(prod_id=product_id).exists():
+             messages.error(request,"Product buyed by someone OR pls check your cart..")
+             return render(request, 'userindex.html',{'display':displays})
+
+
         else:
          bs=Bookstatus()
          bs.prod_id=product_id
@@ -70,7 +76,7 @@ def addbooks(request):
           bookadd.sr = request.POST.get('sr')
           bookadd.userid=cm
           bookadd.save()
-          return render(request, 'addbooks.html',{'profile':profiles,'book':bookdis}) #'bookst':bookstat
+          return render(request, 'addbooks.html',{'profile':profiles,'book':bookdis})
     else:
     
      return render(request, 'addbooks.html',{'profile':profiles,'book':bookdis})
@@ -88,7 +94,8 @@ def cart(request):
     bookd=Bookstatus.objects.all()
     bookd=Bookstatus.objects.filter(user_id=cm). filter(payment='NotSucces')
 
- 
+    bookpaid=Bookstatus.objects.all()
+    bookpaid=Bookstatus.objects.filter(user_id=cm). filter(payment='Succes')
     
     
     if request.method == 'POST':
@@ -99,8 +106,14 @@ def cart(request):
        return render(request, 'cart.html',{'bookdt':bookd,'profile':profiles})
     else:
       return render(request, 'cart.html',{'bookdt':bookd,'profile':profiles})
-
+    bookpaid=Bookstatus.objects.all()
+    bookpaid=Bookstatus.objects.filter(user_id=cm). filter(payment='Succes')
+    if request.method == 'GET':
+       
     
+       return render(request, 'cart.html',{'profile':profiles,'booksuc':bookpaid})
+    else:
+        return render(request, 'cart.html',{'profile':profiles})
 
 
 
@@ -109,7 +122,14 @@ def profile(request):
     profiles=Userreg.objects.all()
     profiles=Userreg.objects.filter(email=cm)
 
-    return render(request, 'profile.html',{'profile':profiles})
+    booknotsell=Bookstatus.objects.all()
+    booknotsell=Bookstatus.objects.filter(sell_id=cm)
+
+    booknotbuy=Bookstatus.objects.all()
+    booknotbuy=Bookstatus.objects.filter(user_id=cm)
+
+    return render(request, 'profile.html',{'profile':profiles,'booknotifs': booknotsell,'booknotifb': booknotbuy})
+    
 def logout(request):
     try:
       del request.session['email']

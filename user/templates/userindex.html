@@ -15,7 +15,15 @@
         
      
         
-
+        .grid-container {
+        position: relative;
+        float: left;
+        grid-template-columns: repeat(5, 1fr);
+      grid-column-gap: 0.5rem;
+      grid-row-gap: 0.5rem;
+      padding: 10px;
+ 
+        }
         
     </style>
 
@@ -78,10 +86,11 @@
 
        
     <div class ="container-fluid bcontent">
-        <div class="cards" >
+        <div class="grid-container" >
                 <div class="card" style="width: 18rem;" >
                   
                     <div class="card-body">
+                     {% load static %} <img src="{%  static 'booksharingsystem/images/img1.jpg' %}" height="100px" width="200px">
                       <h5 class="card-title">{{dis.bookname}}</h5>
                       <p class="card-text">{{dis.description}}</p>
                       <p class="card-text">Price:<b>{{dis.price}}</b></p>
@@ -109,7 +118,7 @@
     {% endfor %}
 
 
-    <div style="margin-top:410px;" class="container-fluid bcontent">
+    <div style="margin-top:900px;" class="container-fluid bcontent">
         <footer style="background-color:whitesmoke" class="container-fluid bcontent" , align="center">
             <a href="#"><i class="fa fa-facebook-official"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>

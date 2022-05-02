@@ -130,7 +130,7 @@
                        
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4">
+                <div class="col-md-12 col-lg-4" >
                     <div class="summary">
                         {% for prof in profile %} 
                         <h3>Order Summary</h3>
@@ -143,14 +143,40 @@
                         {% csrf_token %}
                     <input hidden type="text" value="{{ds.prod_id}}" name="pd">
                     <input class="btn btn-primary btn-sm" type="submit" value="Pay">
+                    <input class="btn btn-primary btn-sm" type="submit" value="Delete from Cart">
                     {% endfor %}
                 </form>
                 </div>
                 
             </div> 
-
-
-
+          
+            <section>
+                <div class="container-fluid bcontent">
+    
+                    
+                    <table class="table table-striped">
+                      <tr>
+                        <th scope="col">Book Id</th>
+                        <th scope="col">Book Name</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Delivery Status</th>
+                        
+                      </tr>
+                      {% for suc in booksuc %}
+                      
+                      <tr>
+                       
+                        <td scope="row">{{suc.prod_id}}</td>
+                        <td scope="row">{{suc.bname}}</td>
+                        <td scope="row">{{suc.payment}}</td>
+                        <td scope="row">{{suc.d_status}}</td>
+                       
+                      </tr>
+                      {% endfor %}
+                      
+                    </table>
+                </div>
+            </section>  
 
 
             <div style="margin-top:500px;" class="container-fluid bcontent">

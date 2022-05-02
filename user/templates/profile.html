@@ -67,10 +67,36 @@
           </p>
         </nav>
     </div>
-    
+    <div align="right">
+    <div class="col-md-4 col-lg-4" >
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Notifications</h3>
+            </div>
+            {% for bns in booknotifs %}
+            <div class="panel-body">
+                <div class="alert alert-success">
+                    You have one order for your book<strong class="default"><i class="fa fa-book"></i>  '{{bns.bname}}'</strong><br>From User ' {{bns.user_id}} '<br>Payment:' {{bns.payment}} '
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                </div>
+          </div>
+          {% endfor %}
+            {% for bnb in booknotifb %}
+            <div class="panel-body">
+                <div class="alert alert-success">
+                    You ordered a book<strong class="default"><i class="fa fa-book"></i>  '{{bnb.bname}}'</strong><br>Payment:'{{bnb.payment}}'<br>Delivery:'{{bnb.d_status}}'
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                </div>
+          </div>
+         
+          {% endfor %} 
+        </div>
+    </div>
+</div>
+
+
 <div>
-    
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container rounded bg-white mt-5 mb-5" >
         {% for prof in profile %} 
         <div class="row">
             <div class="col-md-3 border-right">
@@ -104,18 +130,16 @@
                     </div>
                     {% endfor %} 
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Update Profile</button></div>
-                </div>
+                </div>    
             </div>
-           
         </div>
     </div>
     </div>
     </div>
-
-    
-
-
 </div>
+
+
+
 <div style="margin-top:200px;" class="container-fluid bcontent">
     <footer style="background-color:whitesmoke" class="container-fluid bcontent" , align="center">
         <a href="#"><i class="fa fa-facebook-official"></i></a>
